@@ -6,6 +6,11 @@ public class Spin : MonoBehaviour
 {
     [SerializeField] private GameObject go;
 
+    private Vector3 axis = new Vector3(0, 0, 0);
+
+    private float axisX;
+    private float axisY;
+
 	void Start () 
     {
 		
@@ -14,9 +19,13 @@ public class Spin : MonoBehaviour
 
 	void Update () 
     {
-        Vector3 axis = new Vector3 (1.0f, 1.0f, 0.0f);
+        this.axisX = Mathf.Sin (Time.frameCount / 100.0f);
+        this.axisY = Mathf.Cos (Time.frameCount / 100.0f);
 
-        float angle = 60f * Time.deltaTime;
+        this.axis.x = this.axisX;
+        this.axis.y = this.axisY;
+
+        float angle = 90f * Time.deltaTime;
 
         Quaternion q = Quaternion.AngleAxis (angle, axis);
 
